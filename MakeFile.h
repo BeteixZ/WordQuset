@@ -1,3 +1,4 @@
+//V1.0
 #define _CRT_SUCURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,27 +9,30 @@
 char path[255];
 char *fileName;
 
-void creatDataDir() {
+void creatDataDir()
+{
 	char buffer[255];
 	_getcwd(buffer, 255);
 	strcat(buffer, "\\Data");
 	_mkdir(buffer);
 }
 
-void creatScoreDir() {
+void creatScoreDir()
+{
 	char buffer[255];
 	_getcwd(buffer, 255);
 	strcat(buffer, "\\Score");
 	_mkdir(buffer);
 }
 
-
-void chooseFile() {
+void chooseFile()
+{
 	char rubbish[255];
-	FILE* fp =NULL;
+	FILE *fp = NULL;
 	int len = 0;
 	int index;
-	struct fileIndex {
+	struct fileIndex
+	{
 		int wordNumber;
 		char fileName[255];
 	} fileIndex[50];
@@ -51,7 +55,8 @@ void chooseFile() {
 		wordNum1++;
 	fileIndex[len].wordNumber = wordNum1;
 	strcpy(fileIndex[len++].fileName, pNextInfo.cFileName);
-	while (FindNextFile(hFile, &pNextInfo)) {
+	while (FindNextFile(hFile, &pNextInfo))
+	{
 		int wordNum = 0;
 		char basePath[255];
 		_getcwd(basePath, 255);
@@ -65,12 +70,13 @@ void chooseFile() {
 		fileIndex[len].wordNumber = wordNum;
 		strcpy(fileIndex[len++].fileName, pNextInfo.cFileName);
 	}
-	printf("ÏÖÓÐ´Ê¿â(DataÎÄ¼þ¼ÐÄÚ):\n");
+	printf("ï¿½ï¿½ï¿½Ð´Ê¿ï¿½(Dataï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½):\n");
 	for (int i = 0; i < len; i++)
-		printf("#%d\t%s\t(%d´Ê)\n", i + 1, fileIndex[i].fileName,fileIndex[i].wordNumber);
-	
-	do {
-		printf("ÇëÊäÈëÒªÔØÈëµÄ´Ê¿â:");
+		printf("#%d\t%s\t(%dï¿½ï¿½)\n", i + 1, fileIndex[i].fileName, fileIndex[i].wordNumber);
+
+	do
+	{
+		printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Ä´Ê¿ï¿½:");
 		scanf("%d", &index);
 		if (index <= len)
 		{
@@ -81,26 +87,28 @@ void chooseFile() {
 			strcat(basePath, fileIndex[index - 1].fileName);
 			strcpy(path, basePath);
 		}
-	} while (strlen(path)==0);
+	} while (strlen(path) == 0);
 	fclose(fp);
 }
 
-void addDictionary(char *key, char* value) {
-	if (value!="" && key!="")
+void addDictionary(char *key, char *value)
+{
+	if (value != "" && key != "")
 	{
-		int exist=0;
+		int exist = 0;
 		char buffer[255];
-		FILE* fp = NULL;
+		FILE *fp = NULL;
 		fp = fopen(path, "a+");
-		while (fgets(buffer,255,fp))
+		while (fgets(buffer, 255, fp))
 		{
-			char* fileKey = strtok(buffer, "#");
-			if (strcmp(fileKey,key)==0)
+			char *fileKey = strtok(buffer, "#");
+			if (strcmp(fileKey, key) == 0)
 			{
 				exist = 1;
 			}
 		}
-		if(!exist){
+		if (!exist)
+		{
 			char dic[255];
 			strcpy(dic, key);
 			strcat(dic, "#");
@@ -112,25 +120,26 @@ void addDictionary(char *key, char* value) {
 	}
 }
 
-void deleteDictionary(char* key) {
-	if (key!="")
+void deleteDictionary(char *key)
+{
+	if (key != "")
 	{
 		char tempPath[255];
 		_getcwd(tempPath, 255);
 		strcat(tempPath, "\\Data\\temp.wlb");
-		FILE* fp = NULL;
-		FILE* ft = NULL;
+		FILE *fp = NULL;
+		FILE *ft = NULL;
 		fp = fopen(path, "r+");
 		ft = fopen(tempPath, "w+");
 		if (fp != NULL)
 		{
 			char buffer[255];
-			while (fgets(buffer,255, fp))
+			while (fgets(buffer, 255, fp))
 			{
 				char tempBuffer[255];
 				strcpy(tempBuffer, buffer);
-				char* fileKey = strtok(tempBuffer, "#");
-				if (strcmp(fileKey,key))
+				char *fileKey = strtok(tempBuffer, "#");
+				if (strcmp(fileKey, key))
 				{
 					fputs(buffer, ft);
 				}
@@ -144,30 +153,32 @@ void deleteDictionary(char* key) {
 	}
 }
 
-void displayDictionary() {
-	FILE* fp=NULL;
+void displayDictionary()
+{
+	FILE *fp = NULL;
 	fp = fopen(path, "r");
-	if (fp!=NULL)
+	if (fp != NULL)
 	{
 		char buffer[255];
 		char *key;
 		char *value;
-		while(fgets(buffer, 255, fp)) {
+		while (fgets(buffer, 255, fp))
+		{
 			key = strtok(buffer, "#");
 			value = strtok(NULL, "#");
-			printf("µ¥´Ê:%s\tÊÍÒå:%s", key, value);
+			printf("ï¿½ï¿½ï¿½ï¿½:%s\tï¿½ï¿½ï¿½ï¿½:%s", key, value);
 		}
 	}
 	fclose(fp);
 }
 
-
-int getDictionaryIndex() {
-	FILE* fp=NULL;
-	int index=0;
+int getDictionaryIndex()
+{
+	FILE *fp = NULL;
+	int index = 0;
 	char rubbish[255];
 	fp = fopen(path, "r");
-	if (fp!=NULL)
+	if (fp != NULL)
 	{
 		while (fgets(rubbish, 255, fp))
 			index++;
