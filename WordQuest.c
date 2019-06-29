@@ -50,6 +50,13 @@ int main() {
 	initInterface();
 	chooseFile();
 	wordIndex = getDictionaryIndex();
+	if (wordIndex == 0) {
+		moveTo(5, 3);
+		setColour(bgRed);
+		printf("找不到词库或无单词，按任意键退出！");
+		getch();
+		return 0;
+	}
 	words = (struct Dictionary*) malloc(wordIndex * sizeof(struct Dictionary));
 	loadDictionary();
 	menuSelect();
