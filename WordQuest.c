@@ -489,9 +489,9 @@ float readScore() {
 	if (fp!=NULL)
 	{
 		fgets(score, sizeof(int), fp);
+	flcose(fp);
 
 	}
-	flcose(fp);
 	return (float)(score/100);
 }
 void writeScore(float score) {
