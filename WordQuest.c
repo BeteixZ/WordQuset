@@ -499,8 +499,11 @@ void writeScore(float score) {
 	_getcwd(basePath, 255);
 	strcat(basePath, "\\Data\\");
 	strcat(basePath, fileName);
+		strcat(basePath,"sc");
+
 	FILE* fp = NULL;
 	fp = fopen(basePath, "w");
+	
 	int scoreInt;
 	modf(score*100, scoreInt);
 	fputs(scoreInt, fp);
