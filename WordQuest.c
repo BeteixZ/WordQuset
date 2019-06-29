@@ -60,8 +60,8 @@ void menuSelect() {
 		initInterface();
 		int index;
 		moveTo(25, 25);
-		printf("1.ä¯ÀÀµ¥´Ê\n2.¿´ÖĞÎÄ±³Ó¢ÎÄ\n3.¿´Ó¢ÎÄ±³ÖĞÎÄ\n4.Ìí¼Óµ¥´Ê\n5.É¾³ıµ¥´Ê\n6.Ô¤ÀÀ´Ê¿â\n7.¸ü¸Ä´Ê¿â\n");
-		printf("ÇëÊäÈëÄãµÄÑ¡Ôñ:");
+		printf("1.æµè§ˆå•è¯\n2.çœ‹ä¸­æ–‡èƒŒè‹±æ–‡\n3.çœ‹è‹±æ–‡èƒŒä¸­æ–‡\n4.æ·»åŠ å•è¯\n5.åˆ é™¤å•è¯\n6.é¢„è§ˆè¯åº“\n7.æ›´æ”¹è¯åº“\n");
+		printf("è¯·è¾“å…¥ä½ çš„é€‰æ‹©:");
 		scanf("%d", &index);
 		switch (index)
 		{
@@ -83,10 +83,10 @@ void menuSelect() {
 			char chinese[255];
 			char english[255];
 			moveTo(5, 3);
-			printf("ÇëÊäÈëÖĞÎÄ:");
+			printf("è¯·è¾“å…¥ä¸­æ–‡:");
 			scanf("%s", chinese);
 			moveTo(5, 4);
-			printf("ÇëÊäÈëÓ¢ÎÄ:");
+			printf("è¯·è¾“å…¥è‹±æ–‡:");
 			scanf("%s", english);
 			addDictionary(chinese,english);
 			loadDictionary();
@@ -94,7 +94,7 @@ void menuSelect() {
 		case 5:
 			initInterface();
 			moveTo(5, 3);
-			printf("ÇëÊäÈëÓ¢ÎÄ:");
+			printf("è¯·è¾“å…¥è‹±æ–‡:");
 			scanf("%s", english);
 			deleteDictionary(english);
 			loadDictionary();
@@ -102,7 +102,7 @@ void menuSelect() {
 		case 6:
 			initInterface();
 			displayDictionary();
-			printf("\n°´ÈÎÒâ¼ü·µ»Ø");
+			printf("\næŒ‰ä»»æ„é”®è¿”å›");
 			getchar();
 			getchar();
 			break;
@@ -135,9 +135,9 @@ void dictionaryPreview() {
 		hiddenCursor();
 		setColour(red);
 		moveTo(4, 1);
-		printf("ÎŞµ¥´Ê!\n");
+		printf("æ— å•è¯!\n");
 		setColour(white);
-		printf("°´ÈÎÒâ¼ü·µ»Ø²Ëµ¥!");
+		printf("æŒ‰ä»»æ„é”®è¿”å›èœå•!");
 		getch();
 		menuSelect();
 	}
@@ -145,16 +145,16 @@ void dictionaryPreview() {
 		hiddenCursor();
 		moveTo(5, 3);
 		putEmpty(5, 3, 40);
-		printf("µÚ%d/%d¸öµ¥´Ê:", index + 1, wordIndex);
+		printf("ç¬¬%d/%dä¸ªå•è¯:", index + 1, wordIndex);
 		moveTo(5, 5);
 		putEmpty(5, 5, 40);
-		printf("µ¥´Ê:%s", (words + index)->english);
+		printf("å•è¯:%s", (words + index)->english);
 		moveTo(5, 6);
 		putEmpty(5, 7, 40);
-		printf("ÊÍÒå:%s", (words + index)->chinese);
+		printf("é‡Šä¹‰:%s", (words + index)->chinese);
 		moveTo(0, 7);
 		putEmpty(0, 9, 40);
-		printf("ESC:ÍË³öä¯ÀÀ\t¡ú:ÏÂÒ»¸öµ¥´Ê\t¡û:ÉÏÒ»¸öµ¥´Ê");
+		printf("ESC:é€€å‡ºæµè§ˆ\tâ†’:ä¸‹ä¸€ä¸ªå•è¯\tâ†:ä¸Šä¸€ä¸ªå•è¯");
 		ch = getch();
 		switch (ch)
 		{
@@ -170,7 +170,7 @@ void dictionaryPreview() {
 			else
 			{
 				moveTo(0, 10);
-				printf("ÒÑ×ªµ½µÚÒ»¸öµ¥´Ê¡£");
+				printf("å·²è½¬åˆ°ç¬¬ä¸€ä¸ªå•è¯ã€‚");
 				index = 0;
 			}
 			break;
@@ -185,13 +185,13 @@ void dictionaryPreview() {
 	}
 }
 void initInterface() {
-	system("title Çë±³µ¥´Ê by BKnStar");
+	system("title è¯·èƒŒå•è¯ by BKnStar");
 	system("mode con cols=50 lines=25");
 	system("cls");
 	setColour(red);
 	printf("================");
 	setColour(green);
-	printf(" Çë ±³ µ¥ ´Ê  V1.0 ");
+	printf(" è¯· èƒŒ å• è¯  V1.0 ");
 	setColour(red);
 	printf("===============\n");
 	setColour(white);
@@ -205,19 +205,19 @@ void testEnglish() {
 	char keyHit;
 	setColour(red);
 	moveTo((InterfaceX / 2)-20,( InterfaceY / 2)-10);
-	printf("---ÊäÈëÒª²âÊÔµÄµ¥´ÊÊı¿ªÊ¼²âÊÔ---");
+	printf("---è¾“å…¥è¦æµ‹è¯•çš„å•è¯æ•°å¼€å§‹æµ‹è¯•---");
 	setColour(green);
 	moveTo((InterfaceX / 2) - 20, (InterfaceY / 2) - 9);
-	printf("×Üµ¥´ÊÊı:%d", wordIndex);
+	printf("æ€»å•è¯æ•°:%d", wordIndex);
 	moveTo((InterfaceX / 2) - 20, (InterfaceY / 2) - 8);
 	setColour(white);
-	printf("±¾´Î²âÊÔµ¥´Ê¸öÊı(Ä¬ÈÏ²âÊÔÈ«²¿µ¥´Ê):");
+	printf("æœ¬æ¬¡æµ‹è¯•å•è¯ä¸ªæ•°(é»˜è®¤æµ‹è¯•å…¨éƒ¨å•è¯):");
 	scanf("%d", &testWordIndex);
 	if (testWordIndex<=0|| testWordIndex > wordIndex)
 		testWordIndex = wordIndex;
 	int* randomArray = generateRandomArray(testWordIndex);
 	moveTo(5, 2);
-	printf("ÇëĞ´³öËüµÄÓ¢ÎÄ:");
+	printf("è¯·å†™å‡ºå®ƒçš„è‹±æ–‡:");
 	moveTo(5, 3);
 	putEmpty((InterfaceX / 2) - 20, (InterfaceY / 2) - 10, 40);
 	putEmpty((InterfaceX / 2) - 20, (InterfaceY / 2) - 9, 40);
@@ -229,9 +229,9 @@ void testEnglish() {
 		putEmpty(40, 5, 5);
 		putEmpty(5, 5, 40);
 		moveTo(5, 3);
-		printf("ÖĞÎÄ:%s", (words+(*(randomArray+i)))->chinese);
+		printf("ä¸­æ–‡:%s", (words+(*(randomArray+i)))->chinese);
 		moveTo(5, 5);
-		printf("ËüµÄÓ¢ÎÄÊÇ:");
+		printf("å®ƒçš„è‹±æ–‡æ˜¯:");
 		scanf("%s",answer);
 		char answerWithEnter[255];
 		strcat(answer, "\n");
@@ -240,7 +240,7 @@ void testEnglish() {
 			hiddenCursor();
 			moveTo(40, 5);
 			setColour(bgGreen);
-			printf("ÕıÈ·");			
+			printf("æ­£ç¡®");			
 			setColour(white);
 			rightSum++;
 		}
@@ -249,7 +249,7 @@ void testEnglish() {
 			hiddenCursor();
 			moveTo(40, 5);
 			setColour(bgRed);
-			printf("´íÎó");
+			printf("é”™è¯¯");
 			setColour(white);
 		}
 		keyHit = getch();
@@ -259,7 +259,7 @@ void testEnglish() {
 			hiddenCursor();
 			moveTo(10, 10);
 			setColour(bgRed);
-			printf("ÔÙ°´Ò»´ÎESCÍË³ö,ÏÖÔÚÍË³ö²»»á¼ÇÂ¼³É¼¨!");
+			printf("å†æŒ‰ä¸€æ¬¡ESCé€€å‡º,ç°åœ¨é€€å‡ºä¸ä¼šè®°å½•æˆç»©!");
 			setColour(white);
 			keyHit = getch();
 			if (keyHit == KeyESC)
@@ -273,26 +273,26 @@ void testEnglish() {
 	int highScore = readScore();
 	initInterface();
 	moveTo(5, 5);
-	printf("²âÊÔÍê³É!");
+	printf("æµ‹è¯•å®Œæˆ!");
 	moveTo(5, 6);
-	printf("±¾´Î´ğ¶Ô%dÌâ,ÕıÈ·¸ÅÂÊÎª:%.2f\%", rightSum, correctRate*100);
+	printf("æœ¬æ¬¡ç­”å¯¹%dé¢˜,æ­£ç¡®æ¦‚ç‡ä¸º:%.2f\%", rightSum, correctRate*100);
 	if (testWordIndex>=50)
 	{
 		moveTo(5, 7);
 		setColour(red);
-		printf("±¾´Î²âÊÔ¼ÇÂ¼³É¼¨,");
+		printf("æœ¬æ¬¡æµ‹è¯•è®°å½•æˆç»©,");
 		if (correctRate>highScore)
 		{
 			moveTo(5, 8);
 			setColour(green);
-			printf("¹§Ï²Äã»ñµÃÁË×î¸ß³É¼¨!");
+			printf("æ­å–œä½ è·å¾—äº†æœ€é«˜æˆç»©!");
 			writeScore(correctRate);
 		}
 		else
 		{
 			moveTo(5, 8);
 			setColour(green);
-			printf("×î¸ß¼ÍÂ¼Îª%.2f,ÏÂ´Î¼ÌĞøÅ¬Á¦!",highScore);
+			printf("æœ€é«˜çºªå½•ä¸º%.2f,ä¸‹æ¬¡ç»§ç»­åŠªåŠ›!",highScore);
 		}
 	}
 	getch();
@@ -306,19 +306,19 @@ void testChinese() {
 	char keyHit;
 	setColour(red);
 	moveTo((InterfaceX / 2) - 20, (InterfaceY / 2) - 10);
-	printf("---ÊäÈëÒª²âÊÔµÄµ¥´ÊÊı¿ªÊ¼²âÊÔ---");
+	printf("---è¾“å…¥è¦æµ‹è¯•çš„å•è¯æ•°å¼€å§‹æµ‹è¯•---");
 	setColour(green);
 	moveTo((InterfaceX / 2) - 20, (InterfaceY / 2) - 9);
-	printf("×Üµ¥´ÊÊı:%d", wordIndex);
+	printf("æ€»å•è¯æ•°:%d", wordIndex);
 	moveTo((InterfaceX / 2) - 20, (InterfaceY / 2) - 8);
 	setColour(white);
-	printf("±¾´Î²âÊÔµ¥´Ê¸öÊı(Ä¬ÈÏ²âÊÔÈ«²¿µ¥´Ê):");
+	printf("æœ¬æ¬¡æµ‹è¯•å•è¯ä¸ªæ•°(é»˜è®¤æµ‹è¯•å…¨éƒ¨å•è¯):");
 	scanf("%d", &testWordIndex);
 	if (testWordIndex <= 0 || testWordIndex > wordIndex)
 		testWordIndex = wordIndex;
 	int* randomArray = generateRandomArray(testWordIndex);
 	moveTo(5, 2);
-	printf("ÇëĞ´³öËüµÄÓ¢ÎÄ:");
+	printf("è¯·å†™å‡ºå®ƒçš„è‹±æ–‡:");
 	moveTo(5, 3);
 	putEmpty((InterfaceX / 2) - 20, (InterfaceY / 2) - 10, 40);
 	putEmpty((InterfaceX / 2) - 20, (InterfaceY / 2) - 9, 40);
@@ -330,9 +330,9 @@ void testChinese() {
 		putEmpty(40, 5, 5);
 		putEmpty(5, 5, 40);
 		moveTo(5, 3);
-		printf("Ó¢Óï:%s", (words + (*(randomArray + i)))->english);
+		printf("è‹±è¯­:%s", (words + (*(randomArray + i)))->english);
 		moveTo(5, 5);
-		printf("ËüµÄÖĞÎÄÊÇ:");
+		printf("å®ƒçš„ä¸­æ–‡æ˜¯:");
 		scanf("%s", answer);
 		char answerWithEnter[255];
 		strcat(answer, "\n");
@@ -341,7 +341,7 @@ void testChinese() {
 			hiddenCursor();
 			moveTo(40, 5);
 			setColour(bgGreen);
-			printf("ÕıÈ·");
+			printf("æ­£ç¡®");
 			setColour(white);
 			rightSum++;
 		}
@@ -350,7 +350,7 @@ void testChinese() {
 			hiddenCursor();
 			moveTo(40, 5);
 			setColour(bgRed);
-			printf("´íÎó");
+			printf("é”™è¯¯");
 			setColour(white);
 		}
 		keyHit = getch();
@@ -360,7 +360,7 @@ void testChinese() {
 			hiddenCursor();
 			moveTo(10, 10);
 			setColour(bgRed);
-			printf("ÔÙ°´Ò»´ÎESCÍË³ö,ÏÖÔÚÍË³ö²»»á¼ÇÂ¼³É¼¨!");
+			printf("å†æŒ‰ä¸€æ¬¡ESCé€€å‡º,ç°åœ¨é€€å‡ºä¸ä¼šè®°å½•æˆç»©!");
 			setColour(white);
 			keyHit = getch();
 			if (keyHit == KeyESC)
@@ -374,26 +374,26 @@ void testChinese() {
 	int highScore = readScore();
 	initInterface();
 	moveTo(5, 5);
-	printf("²âÊÔÍê³É!");
+	printf("æµ‹è¯•å®Œæˆ!");
 	moveTo(5, 6);
-	printf("±¾´Î´ğ¶Ô%dÌâ,ÕıÈ·¸ÅÂÊÎª:%.2f\%", rightSum, correctRate * 100);
+	printf("æœ¬æ¬¡ç­”å¯¹%dé¢˜,æ­£ç¡®æ¦‚ç‡ä¸º:%.2f\%", rightSum, correctRate * 100);
 	if (testWordIndex >= 50)
 	{
 		moveTo(5, 7);
 		setColour(red);
-		printf("±¾´Î²âÊÔ¼ÇÂ¼³É¼¨,");
+		printf("æœ¬æ¬¡æµ‹è¯•è®°å½•æˆç»©,");
 		if (correctRate > highScore)
 		{
 			moveTo(5, 8);
 			setColour(green);
-			printf("¹§Ï²Äã»ñµÃÁË×î¸ß³É¼¨!");
+			printf("æ­å–œä½ è·å¾—äº†æœ€é«˜æˆç»©!");
 			writeScore(correctRate);
 		}
 		else
 		{
 			moveTo(5, 8);
 			setColour(green);
-			printf("×î¸ß¼ÍÂ¼Îª%.2f,ÏÂ´Î¼ÌĞøÅ¬Á¦!", highScore);
+			printf("æœ€é«˜çºªå½•ä¸º%.2f,ä¸‹æ¬¡ç»§ç»­åŠªåŠ›!", highScore);
 		}
 	}
 	getch();
@@ -484,6 +484,7 @@ float readScore() {
 		fgets(score, sizeof(int), fp);
 
 	}
+	flcose(fp);
 	return (float)(score/100);
 }
 void writeScore(float score) {
@@ -496,4 +497,5 @@ void writeScore(float score) {
 	int scoreInt;
 	modf(score*100, scoreInt);
 	fputs(scoreInt, fp);
+	fclose(fp);
 }
