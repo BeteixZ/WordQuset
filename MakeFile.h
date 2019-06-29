@@ -15,6 +15,14 @@ void creatDataDir() {
 	_mkdir(buffer);
 }
 
+void creatScoreDir() {
+	char buffer[255];
+	_getcwd(buffer, 255);
+	strcat(buffer, "\\Score");
+	_mkdir(buffer);
+}
+
+
 void chooseFile() {
 	char rubbish[255];
 	FILE* fp =NULL;
@@ -57,12 +65,12 @@ void chooseFile() {
 		fileIndex[len].wordNumber = wordNum;
 		strcpy(fileIndex[len++].fileName, pNextInfo.cFileName);
 	}
-	printf("ç°æœ‰è¯åº“(Dataæ–‡ä»¶å¤¹å†…):\n");
+	printf("ÏÖÓĞ´Ê¿â(DataÎÄ¼ş¼ĞÄÚ):\n");
 	for (int i = 0; i < len; i++)
-		printf("#%d\t%s\t(%dè¯)\n", i + 1, fileIndex[i].fileName,fileIndex[i].wordNumber);
+		printf("#%d\t%s\t(%d´Ê)\n", i + 1, fileIndex[i].fileName,fileIndex[i].wordNumber);
 	
 	do {
-		printf("è¯·è¾“å…¥è¦è½½å…¥çš„è¯åº“:");
+		printf("ÇëÊäÈëÒªÔØÈëµÄ´Ê¿â:");
 		scanf("%d", &index);
 		if (index <= len)
 		{
@@ -131,6 +139,7 @@ void deleteDictionary(char* key) {
 			fclose(ft);
 			remove(path);
 			rename(tempPath, path);
+			remove(tempPath);
 		}
 	}
 }
@@ -146,7 +155,7 @@ void displayDictionary() {
 		while(fgets(buffer, 255, fp)) {
 			key = strtok(buffer, "#");
 			value = strtok(NULL, "#");
-			printf("å•è¯:%s\té‡Šä¹‰:%s", key, value);
+			printf("µ¥´Ê:%s\tÊÍÒå:%s", key, value);
 		}
 	}
 	fclose(fp);
@@ -158,7 +167,11 @@ int getDictionaryIndex() {
 	int index=0;
 	char rubbish[255];
 	fp = fopen(path, "r");
-	while (fgets(rubbish, 255, fp))
-		index++;
+	if (fp!=NULL)
+	{
+		while (fgets(rubbish, 255, fp))
+			index++;
+	}
+
 	return index;
 }
