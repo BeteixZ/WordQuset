@@ -32,7 +32,7 @@ void chooseFile() {
 	WIN32_FIND_DATA pNextInfo;
 	hFile = FindFirstFile(lpFileName, &pNextInfo);
 	if (hFile == INVALID_HANDLE_VALUE)
-		exit(-1);
+		return;
 	int wordNum1 = 0;
 	char basePath1[255];
 	_getcwd(basePath1, 255);
@@ -57,12 +57,12 @@ void chooseFile() {
 		fileIndex[len].wordNumber = wordNum;
 		strcpy(fileIndex[len++].fileName, pNextInfo.cFileName);
 	}
-	printf("ÏÖÓĞ´Ê¿â(DataÎÄ¼ş¼ĞÄÚ):\n");
+	printf("ç°æœ‰è¯åº“(Dataæ–‡ä»¶å¤¹å†…):\n");
 	for (int i = 0; i < len; i++)
-		printf("#%d\t%s\t(%d´Ê)\n", i + 1, fileIndex[i].fileName,fileIndex[i].wordNumber);
+		printf("#%d\t%s\t(%dè¯)\n", i + 1, fileIndex[i].fileName,fileIndex[i].wordNumber);
 	
 	do {
-		printf("ÇëÊäÈëÒªÔØÈëµÄ´Ê¿â:");
+		printf("è¯·è¾“å…¥è¦è½½å…¥çš„è¯åº“:");
 		scanf("%d", &index);
 		if (index <= len)
 		{
@@ -146,7 +146,7 @@ void displayDictionary() {
 		while(fgets(buffer, 255, fp)) {
 			key = strtok(buffer, "#");
 			value = strtok(NULL, "#");
-			printf("µ¥´Ê:%s\tÊÍÒå:%s", key, value);
+			printf("å•è¯:%s\té‡Šä¹‰:%s", key, value);
 		}
 	}
 	fclose(fp);
